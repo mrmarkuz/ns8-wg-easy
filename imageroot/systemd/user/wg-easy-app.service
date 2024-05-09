@@ -6,8 +6,7 @@
 [Unit]
 Description=Podman  wg-easy-app.service
 BindsTo=wg-easy.service
-After=wg-easy.service mariadb-app.service
-
+After=wg-easy.service
 [Service]
 Environment=PODMAN_SYSTEMD_UNIT=%n
 EnvironmentFile=%S/state/environment
@@ -15,22 +14,23 @@ EnvironmentFile=-%S/state/smarthost.env
 WorkingDirectory=%S/state
 Restart=always
 TimeoutStopSec=70
-ExecStartPre=/bin/mkdir -p tmp
+#ExecStartPre=/bin/mkdir -p tmp
 ExecStartPre=/bin/rm -f %t/wg-easy-app.pid %t/wg-easy-app.ctr-id
 ExecStartPre=-runagent discover-smarthost
 ExecStart=/usr/bin/podman run --conmon-pidfile %t/wg-easy-app.pid \
     --cidfile %t/wg-easy-app.ctr-id --cgroups=no-conmon \
     --pod-id-file %t/wg-easy.pod-id --replace -d --name  wg-easy-app \
-    --volume wg-easy-app:/var/www/html/:Z \
-    --volume ./tmp:/tmp:Z \
-    --env=MARIADB_* \
+    --env-file=%S/state/environment \
+    --volume wg-easy:/etc/wireguard:Z \
     --env MARIADB_DB_TYPE=mysql \
-    --env MARIADB_DB_HOST=127.0.0.1 \
-    --env MARIADB_DB_PORT=3306 \
-    --env MARIADB_DB_USER=wg-easy \
-    --env MARIADB_DB_PASSWORD=wg-easy \
-    --env MARIADB_DB_NAME=wg-easy \
-    ${NGINX_IMAGE}
+    --cap-add=NET_ADMIN \
+    --cap-add=SYS_MODULE \
+    --env LANG=de \
+    --env WG_HOST=80.108.120.230 \
+    --env PASSWORD=Nethesis,1234 \
+    --env PORT=${TCP_PORT} \
+    --env WG_PORT=51820 \
+    ${WG_EASY_IMAGE}
 ExecStop=/usr/bin/podman stop --ignore --cidfile %t/wg-easy-app.ctr-id -t 10
 ExecReload=/usr/bin/podman kill -s HUP wg-easy-app
 SyslogIdentifier=%u
