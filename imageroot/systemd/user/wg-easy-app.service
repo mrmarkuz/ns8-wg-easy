@@ -22,14 +22,18 @@ ExecStart=/usr/bin/podman run --conmon-pidfile %t/wg-easy-app.pid \
     --pod-id-file %t/wg-easy.pod-id --replace -d --name  wg-easy-app \
     --env-file=%S/state/environment \
     --volume wg-easy-app:/etc/wireguard:Z \
-    --env MARIADB_DB_TYPE=mysql \
-    --cap-add=NET_ADMIN \
-    --cap-add=SYS_MODULE \
-    --env LANG=de \
-    --env WG_HOST=80.108.120.230 \
-    --env PASSWORD=Nethesis,1234 \
-    --env PORT=${TCP_PORT} \
-    --env WG_PORT=51820 \
+    --cap-add=NET_ADMIN,NET_RAW,SYS_MODULE \
+    --sysctl="net.ipv4.conf.all.src_valid_mark=1" \
+    --sysctl="net.ipv4.ip_forward=1" \
+#    --env LANG=de \
+#    --env WG_PORT=51820 \
+#    --env WG_PERSISTENT_KEEPALIVE=25 \
+#    --env WG_DEFAULT_ADDRESS=10.8.0.x \
+#    --env WG_DEFAULT_DNS=1.1.1.1 \
+#    --env WG_ALLOWED_IPS=10.8.0.0/24,192.168.1.0/24 \
+    --env UI_TRAFFIC_STATS=true \
+    --env WG_POST_UP="iptables -t nat -A POSTROUTING -o tap+ -j MASQUERADE" \
+    --env WG_POST_DOWN="iptables -t nat -D POSTROUTING -o tap+ -j MASQUERADE" \
     ${WG_EASY_IMAGE}
 ExecStop=/usr/bin/podman stop --ignore --cidfile %t/wg-easy-app.ctr-id -t 10
 ExecReload=/usr/bin/podman kill -s HUP wg-easy-app

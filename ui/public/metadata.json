@@ -1,19 +1,19 @@
 {
   "name": "wg-easy",
   "description": {
-    "en": "My wg-easy module"
+    "en": "You have found the easiest way to install & manage WireGuard on any Linux host!"
   },
   "categories": [],
   "authors": [
     {
-      "name": "Name Surname",
-      "email": "author@yourmail.org"
+      "name": "Markus Neuberger",
+      "email": "dev@markusneuberger.at"
     }
   ],
   "docs": {
-    "documentation_url": "https://docs.wg-easy.com/",
-    "bug_url": "https://github.com/NethServer/dev",
-    "code_url": "https://github.com/author/ns8-wg-easy"
+    "documentation_url": "https://github.com/wg-easy/wg-easy?tab=readme-ov-file",
+    "bug_url": "https://community.nethserver.org",
+    "code_url": "ghcr.io/mrmarkuz/ns8-wg-easy"
   },
   "source": "ghcr.io/nethserver/wg-easy"
 }

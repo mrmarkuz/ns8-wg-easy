@@ -32,6 +32,24 @@
               :disabled="loading.getConfiguration || loading.configureModule"
               ref="host"
             >
+
+            <cv-text-input
+              :label="$t('settings.wghost')"
+              v-model="wghost"
+              :placeholder="$t('settings.wghost')"
+              :disabled="loading.getConfiguration || loading.configureModule"
+              :invalid-message="error.wghost"
+              ref="wghost"
+            ></cv-text-input>
+            <cv-text-input
+              :label="$t('settings.password')"
+              v-model="password"
+              :placeholder="$t('settings.password')"
+              :disabled="loading.getConfiguration || loading.configureModule"
+              :invalid-message="error.password"
+              ref="password"
+            ></cv-text-input>
+
             </cv-text-input>
             <cv-toggle
               value="letsEncrypt"
@@ -123,6 +141,8 @@ export default {
       },
       urlCheckInterval: null,
       host: "",
+      wghost: "",
+      password: "",
       isLetsEncryptEnabled: false,
       isHttpToHttpsEnabled: true,
       loading: {
@@ -133,6 +153,8 @@ export default {
         getConfiguration: "",
         configureModule: "",
         host: "",
+        wghost: "",
+        password: "",
         lets_encrypt: "",
         http2https: "",
       },
@@ -200,6 +222,8 @@ export default {
     getConfigurationCompleted(taskContext, taskResult) {
       const config = taskResult.output;
       this.host = config.host;
+      this.wghost = config.wghost;
+      this.password = config.password;
       this.isLetsEncryptEnabled = config.lets_encrypt;
       this.isHttpToHttpsEnabled = config.http2https;
 
@@ -215,6 +239,22 @@ export default {
 
         if (isValidationOk) {
           this.focusElement("host");
+        }
+        isValidationOk = false;
+      }
+      if (!this.wghost) {
+        this.error.wghost = "common.required";
+
+        if (isValidationOk) {
+          this.focusElement("wghost");
+        }
+        isValidationOk = false;
+      }
+      if (!this.password) {
+        this.error.password = "common.required";
+
+        if (isValidationOk) {
+          this.focusElement("password");
         }
         isValidationOk = false;
       }
@@ -269,6 +309,8 @@ export default {
           action: taskAction,
           data: {
             host: this.host,
+            wghost: this.wghost,
+            password: this.password,
             lets_encrypt: this.isLetsEncryptEnabled,
             http2https: this.isHttpToHttpsEnabled,
           },

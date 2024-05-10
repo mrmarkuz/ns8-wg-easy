@@ -18,8 +18,8 @@ data = json.load(sys.stdin)
 # Upper case to set environment variable and minor case to read from stdin
 
 # this values must exists in the json stdin
-# agent.set_env("MAIL_SERVER", data["mail_server"])
-# agent.set_env("LDAP_DOMAIN", data["ldap_domain"])
+agent.set_env("WG_HOST", data["wghost"])
+agent.set_env("PASSWORD", data["password"])
 
 # you can add default values for the following variables
 # agent.set_env("MAIL_DOMAIN",data.get("mail_domain",""))
@@ -30,4 +30,4 @@ data = json.load(sys.stdin)
 
 # Make sure everything is saved inside the environment file
 # just before starting systemd unit
-#agent.dump_env()
+agent.dump_env()
