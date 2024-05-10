@@ -13,7 +13,7 @@
   "docs": {
     "documentation_url": "https://github.com/wg-easy/wg-easy?tab=readme-ov-file",
     "bug_url": "https://community.nethserver.org",
-    "code_url": "ghcr.io/mrmarkuz/ns8-wg-easy"
+    "code_url": "https://github.com/mrmarkuz/ns8-wg-easy"
   },
   "source": "ghcr.io/nethserver/wg-easy"
 }
