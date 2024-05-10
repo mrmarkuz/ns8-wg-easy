@@ -31,7 +31,7 @@
               :invalid-message="$t(error.host)"
               :disabled="loading.getConfiguration || loading.configureModule"
               ref="host"
-            >
+            ></cv-text-input>
 
             <cv-text-input
               :label="$t('settings.wghost')"
@@ -49,8 +49,7 @@
               :invalid-message="error.password"
               ref="password"
             ></cv-text-input>
-
-            </cv-text-input>
+            
             <cv-toggle
               value="letsEncrypt"
               :label="$t('settings.lets_encrypt')"
