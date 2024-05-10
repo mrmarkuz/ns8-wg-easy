@@ -21,7 +21,7 @@ ExecStart=/usr/bin/podman run --conmon-pidfile %t/wg-easy-app.pid \
     --cidfile %t/wg-easy-app.ctr-id --cgroups=no-conmon \
     --pod-id-file %t/wg-easy.pod-id --replace -d --name  wg-easy-app \
     --env-file=%S/state/environment \
-    --volume wg-easy:/etc/wireguard:Z \
+    --volume wg-easy-app:/etc/wireguard:Z \
     --env MARIADB_DB_TYPE=mysql \
     --cap-add=NET_ADMIN \
     --cap-add=SYS_MODULE \
