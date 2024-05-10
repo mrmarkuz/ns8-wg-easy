@@ -1,7 +1,7 @@
 {
   "name": "wg-easy",
   "description": {
-    "en": "You have found the easiest way to install & manage WireGuard on any Linux host!"
+    "en": "Manage WireGuard"
   },
   "categories": ["collaboration"],
   "authors": [
