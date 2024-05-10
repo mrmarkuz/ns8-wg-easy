@@ -3,7 +3,7 @@
   "description": {
     "en": "You have found the easiest way to install & manage WireGuard on any Linux host!"
   },
-  "categories": [],
+  "categories": ["collaboration"],
   "authors": [
     {
       "name": "Markus Neuberger",
