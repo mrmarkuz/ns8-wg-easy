@@ -17,5 +17,7 @@ configure_retval = agent.tasks.run(agent_id=os.environ['AGENT_ID'], action='conf
     "lets_encrypt": renv["TRAEFIK_LETS_ENCRYPT"] == "True",
     "host": renv["TRAEFIK_HOST"],
     "http2https": renv["TRAEFIK_HTTP2HTTPS"] == "True",
+    "wghost": renv["WG_HOST"],
+    "password": renv["PASSWORD"],
 })
 agent.assert_exp(configure_retval['exit_code'] == 0, "The configure-module subtask failed!")
