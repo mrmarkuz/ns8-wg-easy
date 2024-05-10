@@ -40,7 +40,7 @@
     "host_pattern": "Must be a valid fully qualified domain name",
     "host_format": "Must be a valid fully qualified domain name",
     "wghost": "Wireguard Server FQDN or IP",
-    "password": "Wireguard Password"
+    "password": "Web UI Password"
   },
   "about": {
     "title": "About"

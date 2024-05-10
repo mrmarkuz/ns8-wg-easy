@@ -17,7 +17,7 @@ for evar in [
         "TRAEFIK_HOST",
         "TRAEFIK_HTTP2HTTPS",
         "TRAEFIK_LETS_ENCRYPT",
-        "WG_INFO",
+        "WG_HOST",
         "PASSWORD",
     ]:
     agent.set_env(evar, original_environment[evar])

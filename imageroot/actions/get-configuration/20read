@@ -21,8 +21,8 @@ config = {}
 config["host"] = os.getenv("TRAEFIK_HOST","")
 config["http2https"] = os.getenv("TRAEFIK_HTTP2HTTPS") == "True"
 config["lets_encrypt"] = os.getenv("TRAEFIK_LETS_ENCRYPT") == "True"
-config["wghost"] = os.getenv("WG_HOST","localhost")
-config["password"] = os.getenv("PASSWORD","Nethesis,1234")
+config["wghost"] = os.getenv("WG_HOST","")
+config["password"] = os.getenv("PASSWORD","")
 
 # Dump the configuration to stdout
 json.dump(config, fp=sys.stdout)

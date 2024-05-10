@@ -36,7 +36,7 @@
             <cv-text-input
               :label="$t('settings.wghost')"
               v-model="wghost"
-              :placeholder="$t('settings.wghost')"
+              placeholder="1.2.3.4"
               :disabled="loading.getConfiguration || loading.configureModule"
               :invalid-message="error.wghost"
               ref="wghost"
@@ -44,12 +44,12 @@
             <cv-text-input
               :label="$t('settings.password')"
               v-model="password"
-              :placeholder="$t('settings.password')"
+              placeholder="secret"
               :disabled="loading.getConfiguration || loading.configureModule"
               :invalid-message="error.password"
               ref="password"
             ></cv-text-input>
-            
+
             <cv-toggle
               value="letsEncrypt"
               :label="$t('settings.lets_encrypt')"
