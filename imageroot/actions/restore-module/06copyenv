@@ -19,6 +19,10 @@ for evar in [
         "TRAEFIK_LETS_ENCRYPT",
         "WG_HOST",
         "PASSWORD",
+        "WG_ALLOWED_IPS",
+        "WG_DEFAULT_DNS",
+        "MTU",
+        "WG_MTU",
     ]:
     agent.set_env(evar, original_environment[evar])
 

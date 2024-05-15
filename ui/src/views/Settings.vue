@@ -49,7 +49,14 @@
               :invalid-message="error.password"
               ref="password"
             ></cv-text-input>
-
+            <cv-text-input
+              :label="$t('settings.allowedips')"
+              v-model="allowedips"
+              placeholder="0.0.0.0/0"
+              :disabled="loading.getConfiguration || loading.configureModule"
+              :invalid-message="error.allowedips"
+              ref="allowedips"
+            ></cv-text-input>
             <cv-toggle
               value="letsEncrypt"
               :label="$t('settings.lets_encrypt')"
@@ -83,6 +90,30 @@
               <cv-accordion-item :open="toggleAccordion[0]">
                 <template slot="title">{{ $t("settings.advanced") }}</template>
                 <template slot="content">
+                  <cv-text-input
+                    :label="$t('settings.dns')"
+                    v-model="dns"
+                    placeholder="1.1.1.1"
+                    :disabled="loading.getConfiguration || loading.configureModule"
+                    :invalid-message="error.dns"
+                    ref="dns"
+                  ></cv-text-input>
+                  <cv-text-input
+                    :label="$t('settings.mtu')"
+                    v-model="mtu"
+                    placeholder="1420"
+                    :disabled="loading.getConfiguration || loading.configureModule"
+                    :invalid-message="error.mtu"
+                    ref="mtu"
+                  ></cv-text-input>
+                  <cv-text-input
+                    :label="$t('settings.wgmtu')"
+                    v-model="wgmtu"
+                    placeholder="1420"
+                    :disabled="loading.getConfiguration || loading.configureModule"
+                    :invalid-message="error.wgmtu"
+                    ref="wgmtu"
+                  ></cv-text-input>
                 </template>
               </cv-accordion-item>
             </cv-accordion>
@@ -142,6 +173,10 @@ export default {
       host: "",
       wghost: "",
       password: "",
+      allowedips: "",
+      dns: "",
+      mtu: "",
+      wgmtu: "",
       isLetsEncryptEnabled: false,
       isHttpToHttpsEnabled: true,
       loading: {
@@ -154,6 +189,10 @@ export default {
         host: "",
         wghost: "",
         password: "",
+        allowedips: "",
+        dns: "",
+        mtu: "",
+        wgmtu: "",
         lets_encrypt: "",
         http2https: "",
       },
@@ -223,6 +262,10 @@ export default {
       this.host = config.host;
       this.wghost = config.wghost;
       this.password = config.password;
+      this.allowedips = config.allowedips;
+      this.dns = config.dns;
+      this.mtu = config.mtu;
+      this.wgmtu = config.wgmtu;
       this.isLetsEncryptEnabled = config.lets_encrypt;
       this.isHttpToHttpsEnabled = config.http2https;
 
@@ -310,6 +353,10 @@ export default {
             host: this.host,
             wghost: this.wghost,
             password: this.password,
+            allowedips: this.allowedips,
+            dns: this.dns,
+            mtu: this.mtu,
+            wgmtu: this.wgmtu,
             lets_encrypt: this.isLetsEncryptEnabled,
             http2https: this.isHttpToHttpsEnabled,
           },

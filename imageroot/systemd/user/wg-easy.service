@@ -24,7 +24,7 @@ ExecStartPre=/usr/bin/podman pod create --infra-conmon-pidfile %t/wg-easy.pid \
     --name wg-easy \
     --publish 127.0.0.1:${TCP_PORT}:51821 \
     --publish 51820:51820/udp \
-    --network=slirp4netns:mtu=1500 \
+    --network=slirp4netns:mtu=${MTU} \
     --replace
 ExecStart=/usr/bin/podman pod start --pod-id-file %t/wg-easy.pod-id
 ExecStop=/usr/bin/podman pod stop --ignore --pod-id-file %t/wg-easy.pod-id -t 10
