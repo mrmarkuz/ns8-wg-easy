@@ -44,7 +44,10 @@
             <cv-text-input
               :label="$t('settings.password')"
               v-model="password"
-              placeholder="secret"
+              type="password"
+                :password-show-label="$t('settings.show_password')"
+                :password-hide-label="$t('settings.hide_password')"
+                class="mg-bottom"
               :disabled="loading.getConfiguration || loading.configureModule"
               :invalid-message="error.password"
               ref="password"
@@ -300,6 +303,39 @@ export default {
         }
         isValidationOk = false;
       }
+      if (!this.allowedips) {
+        this.error.allowedips = "common.required";
+
+        if (isValidationOk) {
+          this.focusElement("allowedips");
+        }
+        isValidationOk = false;
+      }
+      if (!this.dns) {
+        this.error.dns = "common.required";
+
+        if (isValidationOk) {
+          this.focusElement("dns");
+        }
+        isValidationOk = false;
+      }
+      if (!this.mtu) {
+        this.error.mtu = "common.required";
+
+        if (isValidationOk) {
+          this.focusElement("mtu");
+        }
+        isValidationOk = false;
+      }
+      if (!this.wgmtu) {
+        this.error.wgmtu = "common.required";
+
+        if (isValidationOk) {
+          this.focusElement("wgmtu");
+        }
+        isValidationOk = false;
+      }
+
       return isValidationOk;
     },
     configureModuleValidationFailed(validationErrors) {
