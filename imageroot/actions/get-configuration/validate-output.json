@@ -1,26 +1,35 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "title": "Get wg-easy settings",
-    "$id": "http://nethserver.org/json-schema/task/input/wg-easy/get-configuration",
-    "description": "Get wg-easy settings",
+    "title": "Configure wg-easy",
+    "$id": "http://nethserver.org/json-schema/task/input/wg-easy/configure-module",
+    "description": "Configure wg-easy",
     "examples": [
         {
             "host": "wg-easy.domain.org",
             "http2https": true,
-            "lets_encrypt": true
+            "lets_encrypt": true,
+            "allowedips": "192.168.1.0/24",
+            "dns": "8.8.8.8",
+            "mtu": 1420,
+            "wgmtu": 1420
         }
     ],
     "type": "object",
     "required": [
         "host",
         "http2https",
-        "lets_encrypt"
+        "lets_encrypt",
+        "allowedips",
+        "dns",
+        "mtu",
+        "wgmtu"
     ],
     "properties": {
         "host": {
             "type": "string",
             "description": "Host name for the application, like 'wg-easy.domain.org'",
-            "format": "idn-hostname"
+            "format": "hostname",
+            "pattern": "\\."
         },
         "lets_encrypt": {
             "type": "boolean",
@@ -31,6 +40,33 @@
             "type": "boolean",
             "title": "HTTP to HTTPS redirection",
             "description": "Redirect all the HTTP requests to HTTPS"
+        },
+        "wghost": {
+            "type": "string",
+            "description": "Hostname clients should connect to, like 'public.domain.org'",
+            "format": "hostname",
+            "pattern": "\\."
+        },
+        "password": {
+            "description": "Password (min. 8 chars) for login to wg-easy.",
+            "type": "string",
+            "minLenght": "8"
+        },
+        "allowedips": {
+            "type": "string",
+            "description": "Allowed IP/networks."
+        },
+        "dns": {
+            "type": "string",
+            "description": "Default DNS to use for WG clients."
+        },
+        "mtu": {
+            "type": "integer",
+            "description": "Server MTU"
+        },
+        "wgmtu": {
+            "type": "integer",
+            "description": "Client MTU"
         }
     }
 }
