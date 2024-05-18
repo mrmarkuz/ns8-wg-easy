@@ -28,8 +28,7 @@
         "host": {
             "type": "string",
             "description": "Host name for the application, like 'wg-easy.domain.org'",
-            "format": "hostname",
-            "pattern": "\\."
+            "format": "idn-hostname"
         },
         "lets_encrypt": {
             "type": "boolean",
@@ -44,8 +43,7 @@
         "wghost": {
             "type": "string",
             "description": "Hostname clients should connect to, like 'public.domain.org'",
-            "format": "hostname",
-            "pattern": "\\."
+            "format": "idn-hostname"
         },
         "password": {
             "description": "Password (min. 8 chars) for login to wg-easy.",

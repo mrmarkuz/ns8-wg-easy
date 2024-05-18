@@ -280,59 +280,38 @@ export default {
 
       let isValidationOk = true;
       if (!this.host) {
-        this.error.host = "common.required";
-
-        if (isValidationOk) {
-          this.focusElement("host");
-        }
+        this.error.host = this.$t("common.required");
+        this.focusElement("host");
         isValidationOk = false;
       }
       if (!this.wghost) {
-        this.error.wghost = "common.required";
-
-        if (isValidationOk) {
-          this.focusElement("wghost");
-        }
+        this.error.wghost = this.$t("common.required");
+        this.focusElement("wghost");
         isValidationOk = false;
       }
       if (!this.password) {
-        this.error.password = "common.required";
-
-        if (isValidationOk) {
-          this.focusElement("password");
-        }
+        this.error.password = this.$t("common.required");
+        this.focusElement("password");
         isValidationOk = false;
       }
       if (!this.allowedips) {
-        this.error.allowedips = "common.required";
-
-        if (isValidationOk) {
-          this.focusElement("allowedips");
-        }
+        this.error.allowedips = this.$t("common.required");
+        this.focusElement("allowedips");
         isValidationOk = false;
       }
       if (!this.dns) {
-        this.error.dns = "common.required";
-
-        if (isValidationOk) {
-          this.focusElement("dns");
-        }
+        this.error.dns = this.$t("common.required");
+        this.focusElement("dns");
         isValidationOk = false;
       }
       if (!this.mtu) {
-        this.error.mtu = "common.required";
-
-        if (isValidationOk) {
-          this.focusElement("mtu");
-        }
+        this.error.mtu = this.$t("common.required");
+        this.focusElement("mtu");
         isValidationOk = false;
       }
       if (!this.wgmtu) {
-        this.error.wgmtu = "common.required";
-
-        if (isValidationOk) {
-          this.focusElement("wgmtu");
-        }
+        this.error.wgmtu = this.$t("common.required");
+        this.focusElement("wgmtu");
         isValidationOk = false;
       }
 

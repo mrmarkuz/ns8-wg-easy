@@ -39,12 +39,14 @@
     "domain_already_used_in_traefik": "Domain already used in traefik",
     "host_pattern": "Must be a valid fully qualified domain name",
     "host_format": "Must be a valid fully qualified domain name",
-    "wghost": "Wireguard Server FQDN or IP",
+    "wghost": "FQDN or IP for client configuration",
     "password": "Web UI Password",
     "allowedips": "Allowed IPs/networks",
     "dns": "Default client DNS",
     "mtu": "Server MTU",
-    "wgmtu": "Client MTU"
+    "wgmtu": "Client MTU",
+    "show_password": "Show password",
+    "hide_password": "Hide password"
   },
   "about": {
     "title": "About"
