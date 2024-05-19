@@ -48,9 +48,9 @@
             "pattern": "\\."
         },
         "password": {
-            "description": "Password (min. 8 chars) for login to wg-easy.",
+            "description": "Password for login to wg-easy.",
             "type": "string",
-            "minLenght": "8"
+            "minLenght": 1
         },
         "allowedips": {
             "type": "string",
