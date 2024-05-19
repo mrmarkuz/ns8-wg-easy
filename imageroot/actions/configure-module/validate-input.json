@@ -62,11 +62,15 @@
         },
         "mtu": {
             "type": "integer",
-            "description": "Server MTU"
+            "description": "Server MTU",
+            "minimum": 68,
+            "maximum": 1500
         },
         "wgmtu": {
             "type": "integer",
-            "description": "Client MTU"
+            "description": "Client MTU",
+            "minimum": 68,
+            "maximum": 1500
         }
     }
 }

@@ -103,6 +103,7 @@
                   ></cv-text-input>
                   <cv-text-input
                     :label="$t('settings.mtu')"
+                    type="integer"
                     v-model="mtu"
                     placeholder="1420"
                     :disabled="loading.getConfiguration || loading.configureModule"
@@ -111,6 +112,7 @@
                   ></cv-text-input>
                   <cv-text-input
                     :label="$t('settings.wgmtu')"
+                    type="integer"
                     v-model="wgmtu"
                     placeholder="1420"
                     :disabled="loading.getConfiguration || loading.configureModule"
