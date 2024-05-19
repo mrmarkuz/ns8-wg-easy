@@ -46,7 +46,11 @@
     "mtu": "Server MTU",
     "wgmtu": "Client MTU",
     "show_password": "Show password",
-    "hide_password": "Hide password"
+    "hide_password": "Hide password",
+    "mtu_number_gte": "MTU too low. Please enter an MTU between 68 and 1500",
+    "mtu_number_lte": "MTU too high. Please enter an MTU between 68 and 1500",
+    "wgmtu_number_gte": "MTU too low. Please enter an MTU between 68 and 1500",
+    "wgmtu_number_lte": "MTU too high. Please enter an MTU between 68 and 1500"
   },
   "about": {
     "title": "About"
