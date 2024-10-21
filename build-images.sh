@@ -45,7 +45,7 @@ buildah config --entrypoint=/ \
     --label="org.nethserver.authorizations=node:fwadm traefik@node:routeadm" \
     --label="org.nethserver.tcp-ports-demand=1" \
     --label="org.nethserver.rootfull=0" \
-    --label="org.nethserver.images=ghcr.io/wg-easy/wg-easy:13" \
+    --label="org.nethserver.images=ghcr.io/wg-easy/wg-easy:14" \
     "${container}"
 # Commit the image
 buildah commit "${container}" "${repobase}/${reponame}"
