@@ -38,6 +38,8 @@ iptable_nat
 xt_MASQUERADE
 ```
 
+See also https://www.procustodibus.com/blog/2022/10/wireguard-in-podman/ for more information.
+
 ## Get the configuration
 You can retrieve the configuration with
 
