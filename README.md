@@ -38,7 +38,10 @@ iptable_nat
 xt_MASQUERADE
 ```
 
-See also https://www.procustodibus.com/blog/2022/10/wireguard-in-podman/ for more information.
+Links:
+
+- https://www.procustodibus.com/blog/2022/10/wireguard-in-podman/
+- https://github.com/wg-easy/wg-easy/wiki/Using-WireGuard-Easy-with-rootless-Podman-(incl.-Kubernetes-yaml-file-generation)
 
 ## Get the configuration
 You can retrieve the configuration with
