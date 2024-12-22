@@ -17,12 +17,15 @@ TimeoutStopSec=70
 #ExecStartPre=/bin/mkdir -p tmp
 ExecStartPre=/bin/rm -f %t/wg-easy-app.pid %t/wg-easy-app.ctr-id
 ExecStartPre=-runagent discover-smarthost
+ExecStartPre=/bin/sh -c "/usr/bin/podman run --rm ghcr.io/wg-easy/wg-easy:14 wgpw "'$PASSWORD'" | tr -d \"'\" > %S/state/wg-easy.env"
 ExecStart=/usr/bin/podman run --conmon-pidfile %t/wg-easy-app.pid \
     --cidfile %t/wg-easy-app.ctr-id --cgroups=no-conmon \
     --pod-id-file %t/wg-easy.pod-id --replace -d --name  wg-easy-app \
     --env-file=%S/state/environment \
-    --volume wg-easy-app:/etc/wireguard:Z \
+    --env-file=%S/state/wg-easy.env \
+    --volume wg-easy-app:/etc/wireguard:z \
     --cap-add=NET_ADMIN,NET_RAW,SYS_MODULE \
+    --cap-drop=MKNOD,AUDIT_WRITE \
     --sysctl="net.ipv4.conf.all.src_valid_mark=1" \
     --sysctl="net.ipv4.ip_forward=1" \
 #    --env LANG=de \
@@ -31,10 +34,10 @@ ExecStart=/usr/bin/podman run --conmon-pidfile %t/wg-easy-app.pid \
 #    --env WG_DEFAULT_ADDRESS=10.8.0.x \
 #    --env WG_DEFAULT_DNS=1.1.1.1 \
 #    --env WG_ALLOWED_IPS=10.8.0.0/24,192.168.1.0/24 \
-    --env PASSWORD_HASH=$PASSWORD \
     --env UI_TRAFFIC_STATS=true \
     --env WG_POST_UP="iptables -t nat -A POSTROUTING -o tap+ -j MASQUERADE" \
     --env WG_POST_DOWN="iptables -t nat -D POSTROUTING -o tap+ -j MASQUERADE" \
+    --env PASSWORD="" \
     ${WG_EASY_IMAGE}
 ExecStop=/usr/bin/podman stop --ignore --cidfile %t/wg-easy-app.ctr-id -t 10
 ExecReload=/usr/bin/podman kill -s HUP wg-easy-app

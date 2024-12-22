@@ -12,6 +12,7 @@ exec 1>&2
 # If the control reaches this step, the service can be enabled and started
 
 touch smarthost.env
+touch wg-easy.env
 
 systemctl --user enable wg-easy.service
 systemctl --user restart wg-easy.service

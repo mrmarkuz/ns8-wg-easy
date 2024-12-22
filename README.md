@@ -23,16 +23,19 @@ Set a FQDN for the web interface, a public FQDN where the clients/peers can reac
 
 RHEL-based distros don't autoload the module iptable_nat anymore so one needs to load it manually on the NS8 host. I'm working on implementing nft in the container to avoid this in future.
 
-Thanks to LayLow for this solution, see also [NethServer Community](https://community.nethserver.org/t/vpn-ui-implementation-on-ns8/23054/33?u=mrmarkuz)
+Thanks to LayLow for the first solution, see also [NethServer Community](https://community.nethserver.org/t/vpn-ui-implementation-on-ns8/23054/33?u=mrmarkuz)
 
-Load the module:
+Following modules are recommended, see also [wg-easy wiki](https://github.com/wg-easy/wg-easy/wiki/Using-WireGuard-Easy-with-Podman)
 
-`modprobe iptable_nat`
+    modprobe ip_tables iptable_filter iptable_nat xt_MASQUERADE
 
-To autoload it at boot, create `/etc/modules-load.d/iptable_nat.conf` with following content:
+To autoload them at boot, create `/etc/modules-load.d/wg-easy.conf` with following content:
 
 ```
+ip_tables
+iptable_filter
 iptable_nat
+xt_MASQUERADE
 ```
 
 ## Get the configuration
