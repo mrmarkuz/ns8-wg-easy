@@ -1,6 +1,15 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:recommended"
+  "extends": ["config:base"],
+  "ignorePaths": ["**/ui/**", "**/.devcontainer/**"],
+  "regexManagers": [
+    {
+      "fileMatch": ["build-images.sh"],
+      "matchStrings": [
+        "ghcr\\.io/wg-easy/wg-easy:(?<currentValue>[-0-9\\.a-z]+)"
+      ],
+      "datasourceTemplate": "github-releases",
+      "depNameTemplate": "wg-easy/wg-easy"
+    }
   ]
 }
