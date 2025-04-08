@@ -8,7 +8,7 @@
 import agent
 import os
 
-agent.add_public_service(os.environ['MODULE_ID']+'wgcustom', [
+agent.add_public_service(os.environ['MODULE_ID']+'-wgcustom', [
     "51822/udp", # Wireguard custom port
     ])
 
