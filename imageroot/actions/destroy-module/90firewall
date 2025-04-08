@@ -9,5 +9,4 @@ import agent
 import os
 
 agent.remove_public_service(os.environ['MODULE_ID'])
-
-# Ignore exit code
+agent.remove_public_service(os.environ['MODULE_ID']+'wgcustom')
