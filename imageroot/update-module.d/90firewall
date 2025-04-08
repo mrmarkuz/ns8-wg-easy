@@ -8,7 +8,7 @@
 import agent
 import os
 
-
+agent.remove_public_service(os.environ['MODULE_ID'])
 agent.add_public_service(os.environ['MODULE_ID'], [
     "51821/udp", # Wireguard custom port
     ])
