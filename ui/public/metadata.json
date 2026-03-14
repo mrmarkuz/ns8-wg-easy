@@ -15,5 +15,5 @@
     "bug_url": "https://community.nethserver.org",
     "code_url": "https://github.com/mrmarkuz/ns8-wg-easy"
   },
-  "source": "ghcr.io/nethserver/wg-easy"
+  "source": "ghcr.io/mrmarkuz/wg-easy"
 }
