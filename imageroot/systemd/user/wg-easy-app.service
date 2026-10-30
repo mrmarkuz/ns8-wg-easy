@@ -25,9 +25,12 @@ ExecStart=/usr/bin/podman run --conmon-pidfile %t/wg-easy-app.pid \
     --env-file=%S/state/wg-easy.env \
     --volume wg-easy-app:/etc/wireguard:z \
     --cap-add=NET_ADMIN,NET_RAW,SYS_MODULE \
-    --cap-drop=MKNOD,AUDIT_WRITE \
+#    --cap-drop=MKNOD,AUDIT_WRITE \
     --sysctl="net.ipv4.conf.all.src_valid_mark=1" \
     --sysctl="net.ipv4.ip_forward=1" \
+    --sysctl="net.ipv6.conf.all.disable_ipv6=0" \
+    --sysctl="net.ipv6.conf.all.forwarding=1" \
+    --sysctl="net.ipv6.conf.default.forwarding=1" \
 #    --env LANG=de \
 #    --env WG_PORT=51820 \
 #    --env WG_PERSISTENT_KEEPALIVE=25 \
