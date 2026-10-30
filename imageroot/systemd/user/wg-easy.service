@@ -3,11 +3,6 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 #
 
-#
-# This systemd unit starts a wg-easy instance using Podman.
-# Most parts of this file come from podman-generate-systemd.
-#
-
 [Unit]
 Description=Podman wg-easy.service
 Requires=wg-easy-app.service
@@ -24,7 +19,6 @@ ExecStartPre=/usr/bin/podman pod create --infra-conmon-pidfile %t/wg-easy.pid \
     --name wg-easy \
     --publish 127.0.0.1:${TCP_PORT}:51821 \
     --publish 51820:51820/udp \
-    --network=slirp4netns:mtu=${MTU} \
     --replace
 ExecStart=/usr/bin/podman pod start --pod-id-file %t/wg-easy.pod-id
 ExecStop=/usr/bin/podman pod stop --ignore --pod-id-file %t/wg-easy.pod-id -t 10
