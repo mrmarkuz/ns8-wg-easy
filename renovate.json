@@ -1,23 +1,6 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:recommended"
-  ],
-  "ignorePaths": [
-    "**/ui/**",
-    "**/.devcontainer/**"
-  ],
-  "customManagers": [
-    {
-      "customType": "regex",
-      "managerFilePatterns": [
-        "/build-images.sh/"
-      ],
-      "matchStrings": [
-        "ghcr\\.io/wg-easy/wg-easy:(?<currentValue>[-0-9\\.a-z]+)"
-      ],
-      "datasourceTemplate": "github-releases",
-      "depNameTemplate": "wg-easy/wg-easy"
-    }
-  ]
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+    "extends": [
+        "local>NethServer/.github:ns8-automerge"
+    ]
 }

@@ -20,7 +20,7 @@ config = {}
 # Read current configuration from the environment file
 config["host"] = os.getenv("TRAEFIK_HOST","")
 config["http2https"] = os.getenv("TRAEFIK_HTTP2HTTPS") == "True"
-config["lets_encrypt"] = os.getenv("TRAEFIK_LETS_ENCRYPT") == "True"
+config["lets_encrypt"] = agent.get_route(os.environ['MODULE_ID']).get('lets_encrypt', False)
 config["wghost"] = os.getenv("WG_HOST","")
 config["password"] = os.getenv("PASSWORD","")
 config["allowedips"] = os.getenv("WG_ALLOWED_IPS","0.0.0.0/0")

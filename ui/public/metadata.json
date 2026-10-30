@@ -1,7 +1,11 @@
 {
   "name": "wg-easy",
   "description": {
-    "en": "Manage WireGuard"
+    "en": "wg-easy is an open-source, all-in-one web application that bundles the WireGuard VPN protocol with a user-friendly, browser-based administrative interface",
+    "de": "wg-easy ist eine Open-Source-Komplettlösung in Form einer Webanwendung, die das WireGuard-VPN-Protokoll mit einer benutzerfreundlichen, browserbasierten Verwaltungsoberfläche kombiniert",
+    "fr": "wg-easy est une application web tout-en-un et open source qui associe le protocole VPN WireGuard à une interface d'administration conviviale, accessible via un navigateur",
+    "it": "wg-easy è un'applicazione web open source tutto-in-uno che integra il protocollo VPN WireGuard con un'interfaccia di amministrazione intuitiva, accessibile tramite browser",
+    "es": "wg-easy es una aplicación web todo en uno de código abierto que integra el protocolo VPN WireGuard con una interfaz administrativa basada en el navegador, fácil de usar"
   },
   "categories": ["collaboration"],
   "authors": [

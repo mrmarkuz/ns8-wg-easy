@@ -29,7 +29,7 @@ buildah run \
     --workingdir=/usr/src/ui \
     --env="NODE_OPTIONS=--openssl-legacy-provider" \
     nodebuilder-wg-easy \
-    sh -c "yarn install && yarn build"
+    sh -c "(command -v corepack >/dev/null || npm install -g corepack) && corepack enable && yarn install && yarn build"
 
 # Add imageroot directory to the container image
 buildah add "${container}" imageroot /imageroot
@@ -37,14 +37,13 @@ buildah add "${container}" ui/dist /ui
 # Setup the entrypoint, ask to reserve one TCP port with the label and set a rootless container
 # Select you image(s) with the label org.nethserver.images
 # ghcr.io/xxxxx is the GitHub container registry or your own registry or docker.io for Docker Hub
-# The image tag is set to latest by default, but can be overridden with the IMAGETAG environment variable
-# --label="org.nethserver.images=docker.io/mariadb:10.11.5 docker.io/roundcube/roundcubemail:1.6.4-apache"
 # rootfull=0 === rootless container
 # tcp-ports-demand=1 number of tcp Port to reserve , 1 is the minimum, can be udp or tcp
 buildah config --entrypoint=/ \
     --label="org.nethserver.authorizations=node:fwadm traefik@node:routeadm" \
     --label="org.nethserver.tcp-ports-demand=1" \
     --label="org.nethserver.rootfull=0" \
+	--label="org.nethserver.min-core=3.12.4-0" \
     --label="org.nethserver.images=ghcr.io/wg-easy/wg-easy:15.0.0" \
     "${container}"
 # Commit the image

@@ -17,8 +17,6 @@
     "type": "object",
     "required": [
         "host",
-        "http2https",
-        "lets_encrypt",
         "allowedips",
         "dns",
         "mtu",
