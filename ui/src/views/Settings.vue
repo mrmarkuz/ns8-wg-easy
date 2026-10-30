@@ -32,34 +32,6 @@
               :disabled="loading.getConfiguration || loading.configureModule"
               ref="host"
             ></cv-text-input>
-
-            <cv-text-input
-              :label="$t('settings.wghost')"
-              v-model="wghost"
-              placeholder="1.2.3.4"
-              :disabled="loading.getConfiguration || loading.configureModule"
-              :invalid-message="error.wghost"
-              ref="wghost"
-            ></cv-text-input>
-            <cv-text-input
-              :label="$t('settings.password')"
-              v-model="password"
-              type="password"
-                :password-show-label="$t('settings.show_password')"
-                :password-hide-label="$t('settings.hide_password')"
-                class="mg-bottom"
-              :disabled="loading.getConfiguration || loading.configureModule"
-              :invalid-message="error.password"
-              ref="password"
-            ></cv-text-input>
-            <cv-text-input
-              :label="$t('settings.allowedips')"
-              v-model="allowedips"
-              placeholder="0.0.0.0/0"
-              :disabled="loading.getConfiguration || loading.configureModule"
-              :invalid-message="error.allowedips"
-              ref="allowedips"
-            ></cv-text-input>
             <NsToggle
               value="letsEncrypt"
               :label="core.$t('apps_lets_encrypt.request_https_certificate')"
@@ -126,32 +98,6 @@
               <cv-accordion-item :open="toggleAccordion[0]">
                 <template slot="title">{{ $t("settings.advanced") }}</template>
                 <template slot="content">
-                  <cv-text-input
-                    :label="$t('settings.dns')"
-                    v-model="dns"
-                    placeholder="1.1.1.1"
-                    :disabled="loading.getConfiguration || loading.configureModule"
-                    :invalid-message="error.dns"
-                    ref="dns"
-                  ></cv-text-input>
-                  <cv-text-input
-                    :label="$t('settings.mtu')"
-                    type="integer"
-                    v-model="mtu"
-                    placeholder="1420"
-                    :disabled="loading.getConfiguration || loading.configureModule"
-                    :invalid-message="error.mtu"
-                    ref="mtu"
-                  ></cv-text-input>
-                  <cv-text-input
-                    :label="$t('settings.wgmtu')"
-                    type="integer"
-                    v-model="wgmtu"
-                    placeholder="1420"
-                    :disabled="loading.getConfiguration || loading.configureModule"
-                    :invalid-message="error.wgmtu"
-                    ref="wgmtu"
-                  ></cv-text-input>
                 </template>
               </cv-accordion-item>
             </cv-accordion>
@@ -243,12 +189,6 @@ export default {
       validationErrorDetails: [],
       urlCheckInterval: null,
       host: "",
-      wghost: "",
-      password: "",
-      allowedips: "",
-      dns: "",
-      mtu: "",
-      wgmtu: "",
       isLetsEncryptEnabled: false,
       isLetsEncryptCurrentlyEnabled: false,
       isHttpToHttpsEnabled: true,
@@ -261,12 +201,6 @@ export default {
         getConfiguration: "",
         configureModule: "",
         host: "",
-        wghost: "",
-        password: "",
-        allowedips: "",
-        dns: "",
-        mtu: "",
-        wgmtu: "",
         lets_encrypt: "",
         http2https: "",
         getStatus: false,
@@ -388,12 +322,6 @@ export default {
     getConfigurationCompleted(taskContext, taskResult) {
       const config = taskResult.output;
       this.host = config.host;
-      this.wghost = config.wghost;
-      this.password = config.password;
-      this.allowedips = config.allowedips;
-      this.dns = config.dns;
-      this.mtu = config.mtu;
-      this.wgmtu = config.wgmtu;
       this.isLetsEncryptEnabled = config.lets_encrypt;
       this.isLetsEncryptCurrentlyEnabled = config.lets_encrypt;
       this.isHttpToHttpsEnabled = config.http2https;
@@ -411,37 +339,7 @@ export default {
         this.focusElement("host");
         isValidationOk = false;
       }
-      if (!this.wghost) {
-        this.error.wghost = this.$t("common.required");
-        this.focusElement("wghost");
-        isValidationOk = false;
-      }
-      if (!this.password) {
-        this.error.password = this.$t("common.required");
-        this.focusElement("password");
-        isValidationOk = false;
-      }
-      if (!this.allowedips) {
-        this.error.allowedips = this.$t("common.required");
-        this.focusElement("allowedips");
-        isValidationOk = false;
-      }
-      if (!this.dns) {
-        this.error.dns = this.$t("common.required");
-        this.focusElement("dns");
-        isValidationOk = false;
-      }
-      if (!this.mtu) {
-        this.error.mtu = this.$t("common.required");
-        this.focusElement("mtu");
-        isValidationOk = false;
-      }
-      if (!this.wgmtu) {
-        this.error.wgmtu = this.$t("common.required");
-        this.focusElement("wgmtu");
-        isValidationOk = false;
-      }
-
+      
       return isValidationOk;
     },
     configureModuleValidationFailed(validationErrors) {
@@ -498,12 +396,6 @@ export default {
           action: taskAction,
           data: {
             host: this.host,
-            wghost: this.wghost,
-            password: this.password,
-            allowedips: this.allowedips,
-            dns: this.dns,
-            mtu: parseInt(this.mtu),
-            wgmtu: parseInt(this.wgmtu),
             lets_encrypt: this.isLetsEncryptEnabled,
             http2https: this.isHttpToHttpsEnabled,
           },
