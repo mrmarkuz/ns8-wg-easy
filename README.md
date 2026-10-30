@@ -17,31 +17,30 @@ Output example:
 
 ## Configure
 
-Set a FQDN for the web interface, a public FQDN where the clients/peers can reach the WireGuard VPN server and a password for the web UI in the app settings.
+Set a FQDN for the web interface, browse to it and go through the setup wizard.
+Add a client to get a config or scan a QR code.
 
-## iptables kernel module for RHEL-based distro
+## Migrate from wg-easy 14, ns8-wg-easy 1.0.1
 
-RHEL-based distros don't autoload the module iptable_nat anymore so one needs to load it manually on the NS8 host. I'm working on implementing nft in the container to avoid this in future.
+- To migrate the configuration, backup the configuration in the old wg-easy UI.
+- After the NS8 update to ns8-wg-easy > 1.0.1, wg-easy doesn't start because of an old config file.
 
-Thanks to LayLow for the first solution, see also [NethServer Community](https://community.nethserver.org/t/vpn-ui-implementation-on-ns8/23054/33?u=mrmarkuz)
+If you missed to export the configuration, you can go back to 1.0.1 by executing
 
-Following modules are recommended, see also [wg-easy wiki](https://github.com/wg-easy/wg-easy/wiki/Using-WireGuard-Easy-with-Podman)
+    update-module --force ghcr.io/mrmarkuz/wg-easy:1.0.1
 
-    modprobe ip_tables iptable_filter iptable_nat xt_MASQUERADE
+To make wg-easy 15 start after the update from wg-easy 14: (ns8-wg-easy 1.0.1)
 
-To autoload them at boot, create `/etc/modules-load.d/wg-easy.conf` with following content:
+    runagent -m wg-easy1
+    systemctl --user stop wg-easy
+    podman rm -a
+    podman volume rm -a
+    systemctl --user start wg-easy
+    
+After wg-easy has started, go through the setup wizard, choose "Yes" when it asks "Do you have an existing setup?"
+and import the backup from the first step.
 
-```
-ip_tables
-iptable_filter
-iptable_nat
-xt_MASQUERADE
-```
-
-Links:
-
-- https://www.procustodibus.com/blog/2022/10/wireguard-in-podman/
-- https://github.com/wg-easy/wg-easy/wiki/Using-WireGuard-Easy-with-rootless-Podman-(incl.-Kubernetes-yaml-file-generation)
+See also https://wg-easy.github.io/wg-easy/v15.5/advanced/migrate/from-14-to-15/
 
 ## Get the configuration
 You can retrieve the configuration with
