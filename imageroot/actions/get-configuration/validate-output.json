@@ -18,11 +18,7 @@
     "required": [
         "host",
         "http2https",
-        "lets_encrypt",
-        "allowedips",
-        "dns",
-        "mtu",
-        "wgmtu"
+        "lets_encrypt"
     ],
     "properties": {
         "host": {
