@@ -1,5 +1,5 @@
 {
-  "name": "wg-easy",
+  "name": "Wireguard Easy",
   "description": {
     "en": "wg-easy is an open-source, all-in-one web application that bundles the WireGuard VPN protocol with a user-friendly, browser-based administrative interface",
     "de": "wg-easy ist eine Open-Source-Komplettlösung in Form einer Webanwendung, die das WireGuard-VPN-Protokoll mit einer benutzerfreundlichen, browserbasierten Verwaltungsoberfläche kombiniert",
