@@ -10,9 +10,9 @@ After=wg-easy.service
 
 [Service]
 Environment=PODMAN_SYSTEMD_UNIT=%n
-EnvironmentFile=%S/state/environment
-EnvironmentFile=-%S/state/smarthost.env
-WorkingDirectory=%S/state
+EnvironmentFile=%E/state/environment
+EnvironmentFile=-%E/state/smarthost.env
+WorkingDirectory=%E/state
 Restart=always
 TimeoutStopSec=70
 ExecStartPre=/bin/rm -f %t/wg-easy-app.pid %t/wg-easy-app.ctr-id
@@ -20,7 +20,7 @@ ExecStartPre=-runagent discover-smarthost
 ExecStart=/usr/bin/podman run --conmon-pidfile %t/wg-easy-app.pid \
     --cidfile %t/wg-easy-app.ctr-id --cgroups=no-conmon \
     --pod-id-file %t/wg-easy.pod-id --replace -d --name  wg-easy-app \
-    --env-file=%S/state/wg-easy.env \
+    --env-file=%E/state/wg-easy.env \
     --volume wg-easy-app:/etc/wireguard:Z \
     --cap-add=NET_ADMIN,NET_RAW,SYS_MODULE \
     --sysctl="net.ipv4.conf.all.src_valid_mark=1" \
