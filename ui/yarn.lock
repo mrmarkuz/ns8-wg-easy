@@ -4910,9 +4910,9 @@ ignore@^4.0.3, ignore@^4.0.6:
   integrity sha1-dQ49tYYgh7RzfrrIIH/9HvJ7Jfw=
 
 immutable@^5.1.5:
-  version "5.1.9"
-  resolved "https://registry.yarnpkg.com/immutable/-/immutable-5.1.9.tgz#ac23c3a01992ab665e14ac9ffff298f28cd74a0c"
-  integrity sha512-m8nVez3rwrgmWxtLMt1ZYXB2Lv7OKYn/disyxAlSDYAlKSlFoPPfIAmAM/M5xqL4m4C/wAPw7S2/CNaUii1Hxg==
+  version "5.2.1"
+  resolved "https://registry.yarnpkg.com/immutable/-/immutable-5.2.1.tgz#2edd38d9a90ef82a403623407be203363ec6be51"
+  integrity sha512-CgXNM1BhKqpMjFHTyqQSk09OWqzHNJ/U4BdeBgXoBdR2DdgBdOSv131cO1/YMgzopqnka3B/i949UaMLEKUxOA==
 
 import-cwd@^2.0.0:
   version "2.1.0"
@@ -7567,9 +7567,9 @@ sass-loader@^10.1.1:
     semver "^7.3.2"
 
 sass@^1.34.1:
-  version "1.107.1"
-  resolved "https://registry.yarnpkg.com/sass/-/sass-1.107.1.tgz#a8a461744666e31f8973041a6b9ae7fcb265befd"
-  integrity sha512-aJ1/LvxOOb04YhmiBjzZn3jVwdHKol+OVhoMV6fFl02fF9T3i+5Mg9l/CnzqtM+NX5Jn5o3lAbs/ZJivTCLHfQ==
+  version "1.108.2"
+  resolved "https://registry.yarnpkg.com/sass/-/sass-1.108.2.tgz#ff9c74eba53c53cf30b248fd042dda543ed909f7"
+  integrity sha512-kugK8djotnG9HQRPTOf36asKYlxg8rWWsNLYHOgWDIVOiZQqlRfKBgF4XXM6kfw146kIDMvm57B4GIkvDSyTzA==
   dependencies:
     chokidar "^5.0.0"
     immutable "^5.1.5"
@@ -7851,7 +7851,12 @@ source-list-map@^2.0.0:
   resolved "https://registry.npmmirror.com/source-list-map/download/source-list-map-2.0.1.tgz"
   integrity sha1-OZO9hzv8SEecyp6jpUeDXHwVSzQ=
 
-"source-map-js@>=0.6.2 <2.0.0", source-map-js@^1.2.2:
+"source-map-js@>=0.6.2 <2.0.0":
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/source-map-js/-/source-map-js-1.2.4.tgz#b9303bf27115446da5e6ca3a4a2ee3e9f7b69633"
+  integrity sha512-J7ZjMvHd9O1fcT/5V09QWaaSl2BbWx3F6O08spde82Namf9UB0GxRVIPiNbVsdKkoizHiSpTodo3vp2bAy91MA==
+
+source-map-js@^1.2.2:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/source-map-js/-/source-map-js-1.2.2.tgz#79fb88d97535a21cb27162cb05d211b67acea4ab"
   integrity sha512-KGj/8Y43x35aZVDtt+J4mK1hoLGHULMYfSkODJNQjNDC3oW1PqPoxMwo0pLUsWM/UEGzON/NxeHywEfNXNP3Vw==
